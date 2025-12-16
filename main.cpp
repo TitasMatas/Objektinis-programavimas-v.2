@@ -1,5 +1,5 @@
-
 #include "functions.h"
+
 #include <vector>
 #include <ctime>
 #include <cstdlib>
@@ -50,7 +50,7 @@ int main() {
             cout << "\nĮveskite vardą ir pavardę: ";
             getline(cin, v, ' ');
             getline(cin, p);
-            studentai.emplace_back(v, p, 0.0, 0.0);
+            studentai.emplace_back(v, p);
             NamuDarbuBalai.emplace_back();
             cout << "\nStudentas (LIST) pridėtas.\n";
             KiekisStudentu++;

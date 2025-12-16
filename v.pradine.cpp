@@ -17,49 +17,6 @@
 using namespace std;
 using namespace std::chrono;
 
-
-bool operator<(const Student& a, const Student& b) {
-    if (a.pavarde != b.pavarde)
-        return a.pavarde < b.pavarde;
-    return a.vardas < b.vardas;
-}
-
-double mediana(std::list<int>& balai) {
-    if (balai.empty()) return 0;
-
-    balai.sort();
-
-    size_t n = balai.size();
-    auto it = balai.begin();
-
-    if (n % 2 == 1) {
-        std::advance(it, n / 2);
-        return *it;
-    } else {
-        auto it2 = it;
-        std::advance(it,  n/2 - 1);
-        std::advance(it2, n/2);
-        return (*it + *it2) / 2.0;
-    }
-}
-
-double skaiciuoti_galutini(Student& student, std::list<int>& balai) {
-    if (balai.size() < 2) return 0.0;
-
-    int exam = balai.back();
-    balai.pop_back();
-
-    int suma = 0;
-    for (int b : balai) suma += b;
-
-    student.galutinisVid = ((suma / (double)balai.size()) * 0.4) + (exam * 0.6);
-
-    balai.sort();
-    student.galutinisMed = mediana(balai);
-
-    return student.galutinisVid;
-}
-
 void ivedimas(list<Student>& studentai, list<list<int>>& NamuDarbuBalai, int KiekisStudentu){
     
     if (KiekisStudentu == 0) return;
@@ -103,7 +60,7 @@ void ivedimas(list<Student>& studentai, list<list<int>>& NamuDarbuBalai, int Kie
         return;
     }
     
-    skaiciuoti_galutini(*itStudent, *itBalai); 
+    itStudent->skaiciuoti(itBalai->begin(), itBalai->end());
 }
 
 
@@ -123,21 +80,21 @@ void duomenys_is_failo(list<Student>& studentai, list<list<int>>& NamuDarbuBalai
         ss >> v >> p;
 
         NamuDarbuBalai.emplace_back();
-        auto balaiIt = prev(NamuDarbuBalai.end());
         int balas;
+        auto itBalai = prev(NamuDarbuBalai.end());
 
-        studentai.emplace_back(v, p, 0.0, 0.0);
-        auto studentIt = prev(studentai.end());
+        studentai.emplace_back(v, p);
+        auto itStudent = prev(studentai.end());
 
-        while (ss >> balas) balaiIt->push_back(balas);
+        while (ss >> balas) itBalai->push_back(balas);
 
-        if (balaiIt->size() < 2) {
+        if (itBalai->size() < 2) {
             NamuDarbuBalai.pop_back();
             studentai.pop_back();
             continue;
         }
 
-        skaiciuoti_galutini(*studentIt, *balaiIt);
+        itStudent->skaiciuoti(itBalai->begin(), itBalai->end());
         KiekisStudentu++;
     }
 
@@ -167,7 +124,7 @@ void atsitiktiniai_pazymiai(list<Student>& studentai, list<list<int>>& NamuDarbu
     int egzaminas = rand() % 10 + 1;
     itBalai->push_back(egzaminas);
 
-    skaiciuoti_galutini(*itStudent, *itBalai);
+    itStudent->skaiciuoti(itBalai->begin(), itBalai->end());
 }
 
 void rezultatas(const list<Student>& studentai)
@@ -177,19 +134,19 @@ void rezultatas(const list<Student>& studentai)
 
     list<Student> sorted = studentai;
     sorted.sort([](const Student& a, const Student& b) {
-        if (a.pavarde != b.pavarde) return a.pavarde < b.pavarde;
-        else return a.vardas < b.vardas;
+        if (a.pavarde() != b.pavarde()) return a.pavarde() < b.pavarde();
+        else return a.vardas() < b.vardas();
     });
 
     list<Student> NeTokieProtingi, protingi;
     kategorijos(sorted, NeTokieProtingi, protingi);
 
      for (const auto& s : sorted) {
-        cout << setw(14) << left << s.pavarde
-             << setw(14) << left << s.vardas
+        cout << setw(14) << left << s.pavarde()
+             << setw(14) << left << s.vardas()
              << fixed << setprecision(2) 
-             << setw(19) << left << s.galutinisVid
-             << setw(16) << left << s.galutinisMed << endl;
+             << setw(19) << left << s.galutinisVid()
+             << setw(16) << left << s.galutinisMed() << endl;
     }
 }
 
@@ -201,7 +158,7 @@ void kategorijos(const list<Student>& studentai, list<Student>& NeTokieProtingi,
     protingi.clear();
 
     for (const auto& s : studentai) {
-        if (s.galutinisVid >= 5.0)  protingi.push_back(s);
+        if (s.galutinisVid() >= 5.0)  protingi.push_back(s);
         else NeTokieProtingi.push_back(s);
     }
 
@@ -215,22 +172,22 @@ void kategorijos(const list<Student>& studentai, list<Student>& NeTokieProtingi,
     outProtingi << "Pavardė       Vardas        Galutinis (Vid.)   Galutinis (Med.)\n";
     outProtingi << "----------------------------------------------------------------\n";
     for (const auto& s : protingi) {
-        outProtingi << setw(14) << left << s.pavarde
-             << setw(14) << left << s.vardas
+        outProtingi << setw(14) << left << s.pavarde()
+             << setw(14) << left << s.vardas()
              << fixed << setprecision(2)
-             << setw(19) << left << s.galutinisVid
-             << setw(16) << left << s.galutinisMed << endl;
+             << setw(19) << left << s.galutinisVid()
+             << setw(16) << left << s.galutinisMed() << endl;
     }
     outProtingi.close();
 
     outMaziau << "Pavardė       Vardas        Galutinis (Vid.)   Galutinis (Med.)\n";
     outMaziau << "----------------------------------------------------------------\n";
     for (const auto& s : NeTokieProtingi) {
-        outMaziau << setw(14) << left << s.pavarde
-             << setw(14) << left << s.vardas
+        outMaziau << setw(14) << left << s.pavarde()
+             << setw(14) << left << s.vardas()
              << fixed << setprecision(2)
-             << setw(19) << left << s.galutinisVid
-             << setw(16) << left << s.galutinisMed << endl;
+             << setw(19) << left << s.galutinisVid()
+             << setw(16) << left << s.galutinisMed() << endl;
     }
     outMaziau.close();
     
@@ -247,7 +204,7 @@ void kategorijos2(std::list<Student>& studentai, std::list<Student>& vargsiukai)
 
     for (auto it = studentai.begin(); it != studentai.end(); ) {
         auto cur = it++;
-        if (cur->galutinisVid < 5.0) {
+        if (cur->galutinisVid() < 5.0) {
             vargsiukai.splice(vargsiukai.end(), studentai, cur);
         }
     }
@@ -260,19 +217,19 @@ void kategorijos2(std::list<Student>& studentai, std::list<Student>& vargsiukai)
     ofstream OutDaugiau("protingi.txt");
     OutMaziau << "Pavardė Vardas Galutinis (Vid.) Galutinis (Med.)\n" << string(62,'-') << "\n";
     for (const auto& s : vargsiukai){
-        OutMaziau << left << setw(14) << s.pavarde 
-            << setw(14) << s.vardas
+        OutMaziau << left << setw(14) << s.pavarde() 
+            << setw(14) << s.vardas()
             << fixed << setprecision(2) 
-            << setw(19) << s.galutinisVid
-            << setw(16) << s.galutinisMed << '\n';
+            << setw(19) << s.galutinisVid()
+            << setw(16) << s.galutinisMed() << '\n';
         }
     OutDaugiau << "Pavardė Vardas Galutinis (Vid.) Galutinis (Med.)\n" << string(62,'-') << "\n";
     for (const auto& s : studentai){
-        OutDaugiau << left << setw(14) << s.pavarde 
-            <<setw(14) << s.vardas
+        OutDaugiau << left << setw(14) << s.pavarde()
+            <<setw(14) << s.vardas()
             << fixed << setprecision(2) 
-            << setw(19) << s.galutinisVid
-            << setw(16) << s.galutinisMed << '\n';
+            << setw(19) << s.galutinisVid()
+            << setw(16) << s.galutinisMed() << '\n';
         }
     auto endWrite = high_resolution_clock::now();
     cout << "Įrašymo į failus laikas: " << duration<double>(endWrite - startWrite).count() << " s\n";
@@ -286,7 +243,7 @@ void kategorijos3(const std::list<Student>& studentai,list<Student>& vargsiukai,
     protingi.clear();
 
     auto isProtingas = [](const Student& s) noexcept {
-        return s.galutinisVid >= 5.0;
+        return s.galutinisVid() >= 5.0;
     };
 
     copy_if(studentai.begin(), studentai.end(), back_inserter(protingi), isProtingas);
@@ -301,19 +258,19 @@ void kategorijos3(const std::list<Student>& studentai,list<Student>& vargsiukai,
 
     OutMaziau << "Pavardė Vardas Galutinis (Vid.) Galutinis (Med.)\n" << std::string(62, '-') << "\n";
     for (const auto& s : vargsiukai){
-        OutMaziau << left << setw(14) << s.pavarde 
-            << setw(14) << s.vardas
+        OutMaziau << left << setw(14) << s.pavarde() 
+            << setw(14) << s.vardas()
             << fixed << setprecision(2) 
-            << setw(19) << s.galutinisVid
-            << setw(16) << s.galutinisMed << '\n';
+            << setw(19) << s.galutinisVid()
+            << setw(16) << s.galutinisMed() << '\n';
         }
     OutDaugiau << "Pavardė Vardas Galutinis (Vid.) Galutinis (Med.)\n" << string(62,'-') << "\n";
     for (const auto& s : studentai){
-        OutDaugiau << left << setw(14) << s.pavarde 
-            <<setw(14) << s.vardas
+        OutDaugiau << left << setw(14) << s.pavarde() 
+            <<setw(14) << s.vardas()
             << fixed << setprecision(2) 
-            << setw(19) << s.galutinisVid
-            << setw(16) << s.galutinisMed << '\n';
+            << setw(19) << s.galutinisVid()
+            << setw(16) << s.galutinisMed() << '\n';
         }
 
     auto endWrite = high_resolution_clock::now();
