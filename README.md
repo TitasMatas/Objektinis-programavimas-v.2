@@ -76,9 +76,10 @@ Programa skirta:
   .\programa.exe             # Windows (MinGW)
   ```
 
+
 # Programos veikimas pakeistas su Class
 
-## Spartos analizės rezultatai
+## NAUJI Spartos analizės rezultatai
 
 ### LIST - 1 strategija
 
@@ -163,12 +164,8 @@ Programa skirta:
 
 
 ## Pastabos
-- Laikas didėja linijiškai su duomenų kiekiu – algoritmai O(n).
-- Didžiausią laiko dalį sudaro failų rašymas (I/O), ne algoritmas.
-- Vector greitesnis už List dėl nuoseklios atminties ir mažesnių realokacijų.
-- 3 strategija yra greičiausia ir efektyviausia su LIST.
-- 2 strategija yra greičiausia ir efektyviausia su Vector.
-- Nedideli svyravimai tarp paleidimų yra normalūs dėl OS, cache, I/O.
+- Po visų atnaujinimų Vector laikas gerokai pamažėjo 1 > 2 > 3, kur su 3 Strategija, jis yra optimaliausias
+- Po Class pridėjimo List kompiliacija pasikeitė, naujausi testai parodė, jog optimaliausia strategija tampa 2
 
 ## Testavimo sistemos parametrai
 | Parametras | Reikšmė |
