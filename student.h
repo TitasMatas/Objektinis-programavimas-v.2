@@ -24,6 +24,7 @@ private:
 public:
     Student();
     Student(const std::string& v, const std::string& p);
+    ~Student();
 
     const std::string& vardas() const;
     const std::string& pavarde() const;

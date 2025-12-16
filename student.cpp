@@ -4,6 +4,8 @@ Student::Student() = default;
 
 Student::Student(const std::string& v, const std::string& p) : vardas_(v), pavarde_(p) {}
 
+Student::~Student() = default;
+
 const std::string& Student::vardas() const { return vardas_; }
 const std::string& Student::pavarde() const { return pavarde_; }
 double Student::galutinisVid() const { return galutinisVid_; }
