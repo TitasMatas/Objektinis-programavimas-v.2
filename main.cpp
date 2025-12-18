@@ -1,5 +1,5 @@
-
 #include "functions.h"
+
 #include <vector>
 #include <ctime>
 #include <cstdlib>
@@ -50,7 +50,7 @@ int main() {
             cout << "\nĮveskite vardą ir pavardę: ";
             getline(cin, v, ' ');
             getline(cin, p);
-            studentai.emplace_back(v, p, 0.0, 0.0);
+            studentai.emplace_back(v, p);
             NamuDarbuBalai.emplace_back();
             cout << "\nStudentas (LIST) pridėtas.\n";
             KiekisStudentu++;
@@ -156,14 +156,14 @@ int main() {
             };
             for (const auto& file : files) {
                 cout << "\n[Test LIST - 3 strategija] Failas: " << file << "\n";
-                vector<Student> testStudentai;
-                vector<vector<int>> testBalai;
+                list<Student> testStudentai;
+                list<list<int>> testBalai;
                 int testKiekis = 0;
 
                 auto startTotal = high_resolution_clock::now();
 
                 duomenys_is_failo(testStudentai, testBalai, testKiekis, file);
-                vector<Student> vargsiukai, protingi;
+                list<Student> vargsiukai, protingi;
                 kategorijos3(testStudentai, vargsiukai, protingi);
 
                 auto endTotal = high_resolution_clock::now();
@@ -177,14 +177,14 @@ int main() {
             };
             for (const auto& file : files) {
                 cout << "\n[Test Vector - 3 strategija] Failas: " << file << "\n";
-                list<Student> testStudentai;
-                list<list<int>> testBalai;
+                vector<Student> testStudentai;
+                vector<vector<int>> testBalai;
                 int testKiekis = 0;
 
                 auto startTotal = high_resolution_clock::now();
 
                 duomenys_is_failo(testStudentai, testBalai, testKiekis, file);
-                list<Student> vargsiukai, protingi;
+                vector<Student> vargsiukai, protingi;
                 kategorijos3(testStudentai, vargsiukai, protingi);
 
                 auto endTotal = high_resolution_clock::now();
