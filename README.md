@@ -167,6 +167,34 @@ Programa skirta:
 - Po visų atnaujinimų Vector laikas gerokai pamažėjo 1 > 2 > 3, kur su 3 Strategija, jis yra optimaliausias
 - Po Class pridėjimo List kompiliacija pasikeitė, naujausi testai parodė, jog optimaliausia strategija tampa 2
 
+
+## Optimizavimo flag'ų (O1/O2/O3) eksperimentinė analizė
+
+Testai atlikti su `g++ (Debian 12.2.0)` ir tais pačiais įvesties failais (`studentai10.txt ... studentai100000.txt`). Buvo matuojamas **bendras laikas**, kurį programa išveda testavimo meniu punktuose (nuskaitymas + skirstymas + įrašymas į failus).
+
+### Kompiliavimas
+```bash
+g++ -std=c++17 -O1 main.cpp v.pradine.cpp vector.cpp student.cpp -o programa_O1
+g++ -std=c++17 -O2 main.cpp v.pradine.cpp vector.cpp student.cpp -o programa_O2
+g++ -std=c++17 -O3 main.cpp v.pradine.cpp vector.cpp student.cpp -o programa_O3
+```
+```bash
+./programa_O1
+./programa_O2
+./programa_O3
+```
+
+### Rezultatai (studentai100000.txt, bendras laikas sekundėmis)
+
+| Konteineris | Strategija | -O1 (s) | -O2 (s) | -O3 (s) |
+|---|---:|---:|---:|---:|
+| List | 1 | 3.437516 | 3.485878 | 3.288404 |
+| List | 2 | 2.105336 | 1.705389 | 1.897875 |
+| List | 3 | 2.767923 | 2.270089 | 2.571799 |
+| Vector | 1 | 1.667047 | 1.629618 | 2.166511 |
+| Vector | 2 | 1.680681 | 1.987534 | 2.173088 |
+| Vector | 3 | 1.955111 | 1.618937 | 3.026942 |
+
 ## Testavimo sistemos parametrai
 | Parametras | Reikšmė |
 |------------|---------|
