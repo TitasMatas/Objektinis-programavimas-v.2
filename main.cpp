@@ -26,6 +26,18 @@ int main() {
     vector<Student> NeTokieProtingiV, protingiV;
     int KiekisStudentuV = 0;
 
+    {
+        Student a("Jonas", "Jonaitis");
+        Student b = a;  
+        Student c;
+        c = a;          
+
+        cout << "\n[Rule of Three demonstracija]\n";
+        cout << a << '\n';
+        cout << b << '\n';
+        cout << c << '\n';
+    }
+
     while (true) {
         int pasirinkimas;
         cout << "\nPasirinkimai:\n"
@@ -46,14 +58,14 @@ int main() {
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
         if (pasirinkimas == 0) {
-            string v, p;
+            Student s;
             cout << "\nĮveskite vardą ir pavardę: ";
-            getline(cin, v, ' ');
-            getline(cin, p);
-            studentai.emplace_back(v, p);
+            cin >> s; 
+            studentai.emplace_back(s);
             NamuDarbuBalai.emplace_back();
             cout << "\nStudentas (LIST) pridėtas.\n";
             KiekisStudentu++;
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
         }
         else if (pasirinkimas == 1) {
             if (KiekisStudentu == 0) {
