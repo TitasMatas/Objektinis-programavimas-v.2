@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="lt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Klasės – Studentų pažymių sistema</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="title">Studentų pažymių sistema <span class="badge">Klasės</span></div>
+    <nav>
+      <a href="index.html">Pagrindinis</a>
+      <a href="classes.html">Klasės</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Klasės</h1>
+    <p>Žemiau pateikiamas klasių sąrašas ir trumpi aprašymai.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Klasė</th>
+          <th>Tipas</th>
+          <th>Aprašymas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="class_zmogus.html">Zmogus</a></td>
+          <td>Abstrakti bazinė</td>
+          <td>Bendra žmogaus reprezentacija: vardas, pavardė. Turi grynai virtualų metodą.</td>
+        </tr>
+        <tr>
+          <td><a href="class_student.html">Student</a></td>
+          <td>Išvestinė (derived)</td>
+          <td>Paveldi iš <code>Zmogus</code>, skaičiuoja galutinius pažymius, realizuoja Rule of Three.</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="lt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Zmogus klasė – Dokumentacija</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="title">Studentų pažymių sistema <span class="badge">Klasė</span></div>
+    <nav>
+      <a href="index.html">Pagrindinis</a>
+      <a href="classes.html">Klasės</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Klasė: Zmogus <span class="badge">abstrakti</span></h1>
+    <p>
+      <b>Zmogus</b> – abstrakti bazinė klasė, skirta bendrai aprašyti žmogų.
+      Joje saugomi bendri atributai: <code>vardas</code> ir <code>pavarde</code>.
+      Klasė yra abstrakti, nes turi grynai virtualų metodą <code>spausdinti()</code>.
+    </p>
+
+    <div class="box">
+      <h2>Paveldėjimo ryšys</h2>
+      <pre>Zmogus
+  └── Student</pre>
+    </div>
+
+    <div class="box">
+      <h2>Atributai</h2>
+      <table>
+        <thead><tr><th>Pavadinimas</th><th>Tipas</th><th>Prieiga</th><th>Aprašymas</th></tr></thead>
+        <tbody>
+          <tr><td>vardas_</td><td>std::string</td><td>protected</td><td>Žmogaus vardas</td></tr>
+          <tr><td>pavarde_</td><td>std::string</td><td>protected</td><td>Žmogaus pavardė</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="box">
+      <h2>Metodai</h2>
+      <table>
+        <thead><tr><th>Parašas</th><th>Aprašymas</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><code>Zmogus()</code></td>
+            <td>Numatytasis konstruktorius.</td>
+          </tr>
+          <tr>
+            <td><code>Zmogus(const std::string&amp; v, const std::string&amp; p)</code></td>
+            <td>Konstruktorius su vardu ir pavarde.</td>
+          </tr>
+          <tr>
+            <td><code>virtual ~Zmogus()</code></td>
+            <td>Virtualus destruktorius polimorfiniam naudojimui.</td>
+          </tr>
+          <tr>
+            <td><code>const std::string&amp; vardas() const</code></td>
+            <td>Grąžina vardą.</td>
+          </tr>
+          <tr>
+            <td><code>const std::string&amp; pavarde() const</code></td>
+            <td>Grąžina pavardę.</td>
+          </tr>
+          <tr>
+            <td><code>virtual void spausdinti(std::ostream&amp; out) const = 0</code></td>
+            <td>Grynai virtualus metodas. Užtikrina, kad klasė abstrakti.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="box">
+      <h2>Pavyzdys</h2>
+      <pre><code>// Zmogus z; // KLAIDA: Zmogus yra abstrakti klasė
+
+Student s("Jonas", "Jonaitis"); // OK
+</code></pre>
+    </div>
+  </main>
+</body>
+</html>

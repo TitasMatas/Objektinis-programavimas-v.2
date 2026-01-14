@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="lt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Student klasė – Dokumentacija</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="title">Studentų pažymių sistema <span class="badge">Klasė</span></div>
+    <nav>
+      <a href="index.html">Pagrindinis</a>
+      <a href="classes.html">Klasės</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Klasė: Student <span class="badge">derived</span></h1>
+    <p>
+      <b>Student</b> – išvestinė klasė iš <a href="class_zmogus.html">Zmogus</a>.
+      Ji saugo studento akademinius rezultatus ir apskaičiuoja galutinį pažymį pagal
+      namų darbų vidurkį/medianą bei egzamino pažymį (pagal projekto logiką).
+    </p>
+
+    <div class="box">
+      <h2>Paveldėjimas</h2>
+      <p><code>Student : public Zmogus</code></p>
+    </div>
+
+    <div class="box">
+      <h2>Atributai</h2>
+      <table>
+        <thead><tr><th>Pavadinimas</th><th>Tipas</th><th>Prieiga</th><th>Aprašymas</th></tr></thead>
+        <tbody>
+          <tr><td>galutinisVid_</td><td>double</td><td>private</td><td>Galutinis pažymys pagal vidurkį</td></tr>
+          <tr><td>galutinisMed_</td><td>double</td><td>private</td><td>Galutinis pažymys pagal medianą</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="box">
+      <h2>Metodai</h2>
+      <table>
+        <thead><tr><th>Parašas</th><th>Aprašymas</th></tr></thead>
+        <tbody>
+          <tr><td><code>Student()</code></td><td>Numatytasis konstruktorius.</td></tr>
+          <tr><td><code>Student(const std::string&amp; v, const std::string&amp; p)</code></td><td>Konstruktorius su vardu ir pavarde.</td></tr>
+          <tr><td><code>double galutinisVid() const</code></td><td>Grąžina galutinį pagal vidurkį.</td></tr>
+          <tr><td><code>double galutinisMed() const</code></td><td>Grąžina galutinį pagal medianą.</td></tr>
+          <tr><td><code>template&lt;typename Iter&gt; void skaiciuoti(Iter begin, Iter end)</code></td><td>Apskaičiuoja galutinius pažymius iš pažymių sekos.</td></tr>
+          <tr><td><code>void spausdinti(std::ostream&amp; out) const override</code></td><td>Realizuoja bazinės klasės virtualų metodą (polimorfizmas).</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="box">
+      <h2>Rule of Three</h2>
+      <p>Student klasė įgyvendina trejų metodų taisyklę:</p>
+      <ul>
+        <li><code>Student(const Student&amp; other)</code> – kopijavimo konstruktorius</li>
+        <li><code>Student&amp; operator=(const Student&amp; other)</code> – priskyrimo operatorius</li>
+        <li><code>~Student()</code> – destruktorius</li>
+      </ul>
+    </div>
+
+    <div class="box">
+      <h2>Pavyzdys</h2>
+      <pre><code>Student a("Jonas", "Jonaitis");
+ Student b = a;   
+ Student c;
+ c = a;           
+</code></pre>
+    </div>
+  </main>
+</body>
+</html>

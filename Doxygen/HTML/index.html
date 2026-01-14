@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="lt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Studentų pažymių sistema – Dokumentacija</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="title">Studentų pažymių sistema <span class="badge">HTML dokumentacija</span></div>
+    <nav>
+      <a href="index.html">Pagrindinis</a>
+      <a href="classes.html">Klasės</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Pagrindinis puslapis</h1>
+    <p>
+      Ši dokumentacija aprašo projekto klases ir jų ryšius, įgyvendintus C++ programoje.
+      Dokumentacija pateikta HTML formatu ir skirta įkėlimui į repozitoriją kaip
+      <code>doxygen/html/</code> katalogas.
+    </p>
+
+    <div class="box">
+      <h2>Santrauka</h2>
+      <ul>
+        <li><b>Zmogus</b> – abstrakti bazinė klasė, aprašanti žmogų (vardas, pavardė). Negalima sukurti objektų.</li>
+        <li><b>Student</b> – išvestinė klasė iš <code>Zmogus</code>, saugo ir skaičiuoja galutinius pažymius; demonstruoja Rule of Three.</li>
+      </ul>
+    </div>
+
+    <div class="box">
+      <h2>Reikalavimai (užduotis)</h2>
+      <ul>
+        <li>Turėti bazinę (abstrakčią) klasę žmogui aprašyti.</li>
+        <li>Turėti išvestinę klasę <code>Student</code>.</li>
+        <li>Bazinė klasė abstrakti (turi grynai virtualų metodą).</li>
+        <li><code>Student</code> palaiko Rule of Three (copy ctor, operator=, dtor).</li>
+      </ul>
+    </div>
+
+    <div class="box">
+      <h2>Navigacija</h2>
+      <p>
+        Klasių sąrašas: <a href="classes.html">Klasės</a>.
+      </p>
+    </div>
+  </main>
+</body>
+</html>
