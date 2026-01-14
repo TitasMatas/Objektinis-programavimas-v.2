@@ -68,6 +68,9 @@ Programa skirta:
 - `functions.h` – funkcijų deklaracijos, naudojamos tiek `list`, tiek `vector` realizacijose.
 - `student.h` – išvestinė klasė `Student`, paveldinti iš klasės `Zmogus`, sauganti studento akademinius duomenis ir realizuojanti bazinės klasės virtualius metodus.
 - `zmogus.h` – abstrakti bazinė klasė `Zmogus`, aprašanti bendrus žmogaus atributus (vardą, pavardę) ir apibrėžianti grynai virtualius metodus, reikalingus polimorfiniam naudojimui.
+- Testai"
+  - `tests.cpp` – unit testai (doctest framework)
+- `Doxygen / HTML` – klasių dokumentacija HTML formatu
 - Testiniai failai:
   - `studentai10.txt`
   - `studentai100.txt`
@@ -75,7 +78,7 @@ Programa skirta:
   - `studentai10000.txt`
   - `studentai100000.txt`
 - Dokumentacija
-  - `Makefile`  
+  - `Makefile` - įdiegimo instrukcijos
 
 ## Testavimas
 
@@ -258,11 +261,6 @@ Naudojimas:
 | studentai1000.txt   | −11 %          | +66 %          | −11 %          |
 | studentai10000.txt  | −5 %           | +35 %          | −40 %          |
 | studentai100000.txt | +14 %          | +33 %          | +36 %          |
-
-
-## Pastabos
-- Po visų atnaujinimų Vector laikas gerokai pamažėjo 1 > 2 > 3, kur su 3 Strategija, jis yra optimaliausias
-- Po Class pridėjimo List kompiliacija pasikeitė, naujausi testai parodė, jog optimaliausia strategija tampa 2
 
 
 ## Optimizavimo flag'ų (O1/O2/O3) eksperimentinė analizė
