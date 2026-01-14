@@ -39,11 +39,12 @@ Programa skirta:
 
 Šiame projekte implementuoti perdengti įvesties ir išvesties metodai, leidžiantys patogiai dirbti su Student klase tiek naudojant standartinius srautus, tiek failus.
 
-### Duomenų įvedimas
+## Duomenų įvedimas
 
 Rankinė įvestis `std::cin`
 Perdengtas įvesties `operatorius >>` leidžia nuskaityti studento vardą ir pavardę iš klaviatūros.
-- Naudojimas:
+
+Implementacija:
 - Student s;
 - cin >> s;
 
@@ -57,7 +58,8 @@ Naudojamas:
 
 Išvestis į ekraną `std::cout`
 Perdengtas išvesties `operatorius <<` leidžia atvaizduoti Student objektą ekrane:
-- Naudojantis:
+
+Implementacija:
 - cout << student;
 
 Operatorius realizuotas:
