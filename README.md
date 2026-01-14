@@ -23,17 +23,21 @@ Programa skirta:
 
 
 ## Projekto struktūra
-- `main.cpp` – pagrindinė programos logika
-- `functions.cpp` – funkcijų realizacija
-- `vector.cpp` – funkcijų realizacija naudojant std::vector.
-- `functions.h` – funkcijų deklaracijos
-- `student.h` – struktūra `Student`
+- `main.cpp` – pagrindinė programos logika, vartotojo meniu, testavimo scenarijų vykdymas ir spartos matavimas.
+- `functions.cpp` – bendrųjų funkcijų realizacija, skirta darbui su `std::list` konteineriu (duomenų įvedimas, skaitymas iš failo, rezultatų skaičiavimas ir skirstymas).
+- `vector.cpp` – funkcijų realizacija naudojant `std::vector` konteinerį bei optimizuotas algoritmines strategijas (`partition`, `copy_if` ir kt.).
+- `student.cpp` – klasės `Student` metodų realizacija, įskaitant kopijavimo konstruktorių, priskyrimo operatorių, destruktorių (Rule of Three) bei virtualių metodų realizaciją.
+- `functions.h` – funkcijų deklaracijos, naudojamos tiek `list`, tiek `vector` realizacijose.
+- `student.h` – išvestinė klasė `Student`, paveldinti iš klasės `Zmogus`, sauganti studento akademinius duomenis ir realizuojanti bazinės klasės virtualius metodus.
+- `zmogus.h` – abstrakti bazinė klasė `Zmogus`, aprašanti bendrus žmogaus atributus (vardą, pavardę) ir apibrėžianti grynai virtualius metodus, reikalingus polimorfiniam naudojimui.
 - Testiniai failai:
   - `studentai10.txt`
   - `studentai100.txt`
   - `studentai1000.txt`
   - `studentai10000.txt`
   - `studentai100000.txt`
+- Dokumentacija
+  - `Makefile`  
 
 ## Perdengti metodai: įvestis ir išvestis (Student klasė)
 
@@ -78,7 +82,7 @@ Naudojimas:
 ### Kaip kompiliuoti
 - Terminale:
   ```bash
-  g++ -std=c++17 main.cpp v.pradine.cpp vector.cpp -o programa.exe
+  g++ -std=c++17 v.pradine.cpp main.cpp vector.cpp student.cpp -o programa.exe
   ```
 
 ### Kaip paleisti
