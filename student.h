@@ -1,7 +1,8 @@
 #ifndef STUDENT_H
 #define STUDENT_H
 
-#include <string>
+#include "zmogus.h"
+
 #include <vector>
 #include <algorithm>
 #include <numeric>
@@ -9,10 +10,8 @@
 #include <iostream>
 #include <iomanip>
 
-class Student {
+class Student : public Zmogus {
 private:
-    std::string vardas_;
-    std::string pavarde_;
     double galutinisVid_{0.0};
     double galutinisMed_{0.0};
 
@@ -27,8 +26,6 @@ public:
     Student();
     Student(const std::string& v, const std::string& p);
 
-    const std::string& vardas() const;
-    const std::string& pavarde() const;
     double galutinisVid() const;
     double galutinisMed() const;
 
@@ -42,13 +39,14 @@ public:
 
         const double vid = std::accumulate(balai.begin(), balai.end(), 0.0) / balai.size();
         galutinisVid_ = 0.4 * vid + 0.6 * egz;
-        galutinisMed_ = mediana(balai);
+        galutinisMed_ = mediana(balai); 
     }
 
-    // Rule of Three
     Student(const Student& other);
     Student& operator=(const Student& other);
-    ~Student();
+    ~Student() override;
+
+    void spausdinti(std::ostream& out) const override;
 
     friend std::istream& operator>>(std::istream& in, Student& s);
     friend std::ostream& operator<<(std::ostream& out, const Student& s);

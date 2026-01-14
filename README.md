@@ -23,17 +23,21 @@ Programa skirta:
 
 
 ## Projekto struktūra
-- `main.cpp` – pagrindinė programos logika
-- `functions.cpp` – funkcijų realizacija
-- `vector.cpp` – funkcijų realizacija naudojant std::vector.
-- `functions.h` – funkcijų deklaracijos
-- `student.h` – struktūra `Student`
+- `main.cpp` – pagrindinė programos logika, vartotojo meniu, testavimo scenarijų vykdymas ir spartos matavimas.
+- `functions.cpp` – bendrųjų funkcijų realizacija, skirta darbui su `std::list` konteineriu (duomenų įvedimas, skaitymas iš failo, rezultatų skaičiavimas ir skirstymas).
+- `vector.cpp` – funkcijų realizacija naudojant `std::vector` konteinerį bei optimizuotas algoritmines strategijas (`partition`, `copy_if` ir kt.).
+- `student.cpp` – klasės `Student` metodų realizacija, įskaitant kopijavimo konstruktorių, priskyrimo operatorių, destruktorių (Rule of Three) bei virtualių metodų realizaciją.
+- `functions.h` – funkcijų deklaracijos, naudojamos tiek `list`, tiek `vector` realizacijose.
+- `student.h` – išvestinė klasė `Student`, paveldinti iš klasės `Zmogus`, sauganti studento akademinius duomenis ir realizuojanti bazinės klasės virtualius metodus.
+- `zmogus.h` – abstrakti bazinė klasė `Zmogus`, aprašanti bendrus žmogaus atributus (vardą, pavardę) ir apibrėžianti grynai virtualius metodus, reikalingus polimorfiniam naudojimui.
 - Testiniai failai:
   - `studentai10.txt`
   - `studentai100.txt`
   - `studentai1000.txt`
   - `studentai10000.txt`
   - `studentai100000.txt`
+- Dokumentacija
+  - `Makefile`  
 
 ## Perdengti metodai: įvestis ir išvestis (Student klasė)
 
@@ -78,7 +82,7 @@ Naudojimas:
 ### Kaip kompiliuoti
 - Terminale:
   ```bash
-  g++ -std=c++17 main.cpp v.pradine.cpp vector.cpp -o programa.exe
+  g++ -std=c++17 v.pradine.cpp main.cpp vector.cpp student.cpp -o programa.exe
   ```
 
 ### Kaip paleisti
@@ -123,82 +127,82 @@ Naudojimas:
 
 | Failas              | Nuskaitymas (s) | Rūšiavimas (s) | Įrašymas (s) | Bendras (s) |
 | ------------------- | --------------- | -------------- | ------------ | ----------- |
-| studentai10.txt     | 0.000287        | 0.014530       | 0.005609     | 0.026765    |
-| studentai100.txt    | 0.001294        | 0.000061       | 0.007433     | 0.012779    |
-| studentai1000.txt   | 0.009958        | 0.000487       | 0.037817     | 0.054260    |
-| studentai10000.txt  | 0.071582        | 0.002647       | 0.266534     | 0.343992    |
-| studentai100000.txt | 0.793006        | 0.025544       | 3.276945     | 4.102341    |
+| studentai10.txt     | 0.000000        | 0.000005       | 0.003263     | 0.009514    |
+| studentai100.txt    | 0.001478        | 0.000090       | 0.013258     | 0.027356    |
+| studentai1000.txt   | 0.011640        | 0.000390       | 0.029551     | 0.045800    |
+| studentai10000.txt  | 0.078304        | 0.004297       | 0.171989     | 0.258004    |
+| studentai100000.txt | 1.029958        | 0.029662       | 2.138612     | 3.205476    |
 
 ### LIST - 2 strategija
 
 | Failas              | Nuskaitymas (s) | Rūšiavimas (s) | Įrašymas (s) | Bendras (s) |
 | ------------------- | --------------- | -------------- | ------------ | ----------- |
-| studentai10.txt     | 0.000304        | 0.000016       | 0.002369     | 0.006527    |
-| studentai100.txt    | 0.000784        | 0.000011       | 0.002161     | 0.007033    |
-| studentai1000.txt   | 0.006680        | 0.000042       | 0.014642     | 0.024586    |
-| studentai10000.txt  | 0.061414        | 0.000526       | 0.141509     | 0.208424    |
-| studentai100000.txt | 0.770634        | 0.007333       | 1.824534     | 2.609612    |
+| studentai10.txt     | 0.000520        | 0.000003       | 0.002798     | 0.008564    |
+| studentai100.txt    | 0.001608        | 0.000015       | 0.003090     | 0.011421    |
+| studentai1000.txt   | 0.006825        | 0.000136       | 0.023586     | 0.038612    |
+| studentai10000.txt  | 0.069184        | 0.000514       | 0.179034     | 0.251509    |
+| studentai100000.txt | 0.856178        | 0.005642       | 1.854959     | 2.725951    |
 
 ### LIST - 3 strategija
 
 | Failas              | Nuskaitymas (s) | Rūšiavimas (s) | Įrašymas (s) | Bendras (s) |
 | ------------------- | --------------- | -------------- | ------------ | ----------- |
-| studentai10.txt     | 0.000578        | 0.000010       | 0.007253     | 0.034341    |
-| studentai100.txt    | 0.003710        | 0.000140       | 0.024040     | 0.148614    |
-| studentai1000.txt   | 0.016724        | 0.000519       | 0.063894     | 0.087855    |
-| studentai10000.txt  | 0.180881        | 0.006807       | 0.295709     | 0.515608    |
-| studentai100000.txt | 1.122824        | 0.042183       | 2.569667     | 3.738944    |
+| studentai10.txt     | 0.000481        | 0.000006       | 0.013173     | 0.020066    |
+| studentai100.txt    | 0.001485        | 0.000052       | 0.004503     | 0.021522    |
+| studentai1000.txt   | 0.013401        | 0.000447       | 0.037441     | 0.057745    |
+| studentai10000.txt  | 0.086479        | 0.007547       | 0.195556     | 0.295174    |
+| studentai100000.txt | 1.680299        | 0.048475       | 1.956956     | 3.690595    |
 
-## LIST pokitis pridėjus Class
+## LIST pokitis išskaidžius Classes ir pridėjus naują Class - Žmogus
 
 | Failas              | Pokytis S1 (%) | Pokytis S2 (%) | Pokytis S3 (%) |
 | ------------------- | -------------- | -------------- | -------------- |
-| studentai10.txt     | +371 %         | −10 %          | +261 %         |
-| studentai100.txt    | +85 %          | +12 %          | +1180 %        |
-| studentai1000.txt   | +42 %          | −36 %          | +191 %         |
-| studentai10000.txt  | +37 %          | −13 %          | +146 %         |
-| studentai100000.txt | +52 %          | +7 %           | +107 %         |
+| studentai10.txt     | −64 %          | +31 %          | −42 %          |
+| studentai100.txt    | +114 %         | +62 %          | −85 %          |
+| studentai1000.txt   | −16 %          | +57 %          | −34 %          |
+| studentai10000.txt  | −25 %          | +21 %          | −43 %          |
+| studentai100000.txt | −22 %          | +4 %           | −1 %           |
 
 
 ### Vector - 1 strategija
 
 | Failas              | Nuskaitymas (s) | Rūšiavimas (s) | Įrašymas (s) | Bendras (s) |
 | ------------------- | --------------- | -------------- | ------------ | ----------- |
-| studentai10.txt     | 0.000294        | 0.000008       | 0.004795     | 0.016581    |
-| studentai100.txt    | 0.000972        | 0.000067       | 0.004673     | 0.010106    |
-| studentai1000.txt   | 0.007309        | 0.000207       | 0.028303     | 0.041310    |
-| studentai10000.txt  | 0.067681        | 0.001429       | 0.166701     | 0.239431    |
-| studentai100000.txt | 0.573965        | 0.008311       | 1.667649     | 2.257191    |
+| studentai10.txt     | 0.000000        | 0.000004       | 0.002258     | 0.007761    |
+| studentai100.txt    | 0.001667        | 0.000024       | 0.003603     | 0.008779    |
+| studentai1000.txt   | 0.008417        | 0.000407       | 0.022281     | 0.036815    |
+| studentai10000.txt  | 0.071413        | 0.001851       | 0.150424     | 0.227011    |
+| studentai100000.txt | 0.722149        | 0.015798       | 1.818092     | 2.562940    |
 
 ### VECTOR - 2 strategija
 
 | Failas              | Nuskaitymas (s) | Rūšiavimas (s) | Įrašymas (s) | Bendras (s) |
 | ------------------- | --------------- | -------------- | ------------ | ----------- |
-| studentai10.txt     | 0.000466        | 0.000021       | 0.003100     | 0.010703    |
-| studentai100.txt    | 0.001463        | 0.000146       | 0.002706     | 0.010808    |
-| studentai1000.txt   | 0.007682        | 0.000347       | 0.015061     | 0.028531    |
-| studentai10000.txt  | 0.053238        | 0.001095       | 0.125299     | 0.183045    |
-| studentai100000.txt | 0.660618        | 0.020442       | 1.600361     | 2.285500    |
+| studentai10.txt     | 0.000637        | 0.000005       | 0.004139     | 0.014246    |
+| studentai100.txt    | 0.001992        | 0.000029       | 0.006710     | 0.019465    |
+| studentai1000.txt   | 0.009877        | 0.000334       | 0.030989     | 0.047409    |
+| studentai10000.txt  | 0.067449        | 0.001361       | 0.175010     | 0.247946    |
+| studentai100000.txt | 0.789725        | 0.011948       | 2.231791     | 3.039123    |
 
 ### Vector - 3 strategija
 
 | Failas              | Nuskaitymas (s) | Rūšiavimas (s) | Įrašymas (s) | Bendras (s) |
 | ------------------- | --------------- | -------------- | ------------ | ----------- |
-| studentai10.txt     | 0.000607        | 0.000010       | 0.003074     | 0.008804    |
-| studentai100.txt    | 0.001164        | 0.000037       | 0.003762     | 0.010684    |
-| studentai1000.txt   | 0.007718        | 0.000158       | 0.020678     | 0.032670    |
-| studentai10000.txt  | 0.065757        | 0.002209       | 0.274454     | 0.358372    |
-| studentai100000.txt | 0.832484        | 0.019327       | 1.222532     | 2.082422    |
+| studentai10.txt     | 0.000374        | 0.000029       | 0.003126     | 0.008338    |
+| studentai100.txt    | 0.000803        | 0.000047       | 0.004695     | 0.011033    |
+| studentai1000.txt   | 0.004934        | 0.000219       | 0.017771     | 0.028912    |
+| studentai10000.txt  | 0.053650        | 0.001926       | 0.153172     | 0.214084    |
+| studentai100000.txt | 0.759770        | 0.019771       | 2.052370     | 2.836921    |
 
-## Vector pokitis pridėjus Class
+## Vector pokitis išskaidžius Classes ir pridėjus naują Class - Žmogus
 
 | Failas              | Pokytis S1 (%) | Pokytis S2 (%) | Pokytis S3 (%) |
 | ------------------- | -------------- | -------------- | -------------- |
-| studentai10.txt     | +189 %         | +73 %          | +29 %          |
-| studentai100.txt    | +44 %          | +72 %          | −85 %          |
-| studentai1000.txt   | +106 %         | +4 %           | −13 %          |
-| studentai10000.txt  | +53 %          | +8 %           | +34 %          |
-| studentai100000.txt | +37 %          | +58 %          | −32 %          |
+| studentai10.txt     | −53 %          | +33 %          | −5 %           |
+| studentai100.txt    | −13 %          | +80 %          | +3 %           |
+| studentai1000.txt   | −11 %          | +66 %          | −11 %          |
+| studentai10000.txt  | −5 %           | +35 %          | −40 %          |
+| studentai100000.txt | +14 %          | +33 %          | +36 %          |
 
 
 ## Pastabos
