@@ -1,4 +1,42 @@
-# Studentų pažymių valdymo sistema ir spartos analizė
+## Release istorija ir rezultatų analizė
+
+### v1.1_release  
+**Pirmasis stabilus klasinis sprendimas**
+
+**Pakeitimai:**
+- Programa perrašyta naudojant klases vietoje struktūrų
+- Pradėta naudoti `Student` klasė
+- Atlikti pirmieji spartos testai su `list` ir `vector` konteineriais
+- Sukurta bazinė testavimo infrastruktūra
+
+**Rezultatų komentaras:**
+- `vector` konteineris parodė geresnį našumą didesniuose duomenų rinkiniuose
+- `list` buvo lėtesnis dėl dažnų atminties prieigų
+- Tai patvirtino, kad konteinerio pasirinkimas turi didelę įtaką bendram vykdymo laikui
+
+### v1.2_release  
+**Rule of Three ir projekto struktūros pertvarkymas**
+
+**Pakeitimai:**
+- Implementuota **Rule of Three** (`copy ctor`, `operator=`, `destructor`) klasėje `Student`
+- Perstruktūrizuotas projekto katalogų išdėstymas
+- Atnaujintas `README.md` su detalesne spartos analize
+- Patobulinta kodo skaitymo ir priežiūros kokybė
+
+**Rezultatų komentaras:**
+- Rule of Three įdiegimas **neturėjo reikšmingos neigiamos įtakos našumui**
+- Kopijavimo operacijos tapo aiškiai kontroliuojamos ir saugios
+- Projektas tapo labiau paruoštas tolimesnei plėtrai ir testavimui
+
+### v1.5_release  
+**Abstrakti bazinė klasė `Zmogus` ir paveldėjimas**
+
+**Pakeitimai:**
+- Pridėta abstrakti bazinė klasė `Zmogus`
+- `Student` klasė paveldi iš `Zmogus`:
+  ```cpp
+  class Student : public Zmogus
+  ```
 
 ## Aprašymas
 Programa skirta:
