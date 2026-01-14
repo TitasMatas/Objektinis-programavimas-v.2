@@ -28,7 +28,7 @@ void ivedimas(list<Student>& studentai, list<list<int>>& NamuDarbuBalai, int Kie
 
     cout << "\nStudento pažymių konteinerio adresas atmintyje: " << &(*itBalai) << "\n";
 
-    int EmptyCount = 0, balas;
+    int EmptyCount = 0;
     string eilute;
 
     cout << "\nĮveskite pažymius. Norit baigti ('Enter' du kartus): \n";   
@@ -142,11 +142,7 @@ void rezultatas(const list<Student>& studentai)
     kategorijos(sorted, NeTokieProtingi, protingi);
 
      for (const auto& s : sorted) {
-        cout << setw(14) << left << s.pavarde()
-             << setw(14) << left << s.vardas()
-             << fixed << setprecision(2) 
-             << setw(19) << left << s.galutinisVid()
-             << setw(16) << left << s.galutinisMed() << endl;
+        cout << s << '\n';
     }
 }
 
@@ -172,22 +168,14 @@ void kategorijos(const list<Student>& studentai, list<Student>& NeTokieProtingi,
     outProtingi << "Pavardė       Vardas        Galutinis (Vid.)   Galutinis (Med.)\n";
     outProtingi << "----------------------------------------------------------------\n";
     for (const auto& s : protingi) {
-        outProtingi << setw(14) << left << s.pavarde()
-             << setw(14) << left << s.vardas()
-             << fixed << setprecision(2)
-             << setw(19) << left << s.galutinisVid()
-             << setw(16) << left << s.galutinisMed() << endl;
+        outProtingi << s << '\n';
     }
     outProtingi.close();
 
     outMaziau << "Pavardė       Vardas        Galutinis (Vid.)   Galutinis (Med.)\n";
     outMaziau << "----------------------------------------------------------------\n";
     for (const auto& s : NeTokieProtingi) {
-        outMaziau << setw(14) << left << s.pavarde()
-             << setw(14) << left << s.vardas()
-             << fixed << setprecision(2)
-             << setw(19) << left << s.galutinisVid()
-             << setw(16) << left << s.galutinisMed() << endl;
+        outMaziau << s << '\n';
     }
     outMaziau.close();
     
@@ -217,19 +205,11 @@ void kategorijos2(std::list<Student>& studentai, std::list<Student>& vargsiukai)
     ofstream OutDaugiau("protingi.txt");
     OutMaziau << "Pavardė Vardas Galutinis (Vid.) Galutinis (Med.)\n" << string(62,'-') << "\n";
     for (const auto& s : vargsiukai){
-        OutMaziau << left << setw(14) << s.pavarde() 
-            << setw(14) << s.vardas()
-            << fixed << setprecision(2) 
-            << setw(19) << s.galutinisVid()
-            << setw(16) << s.galutinisMed() << '\n';
+        OutMaziau << s << '\n';
         }
     OutDaugiau << "Pavardė Vardas Galutinis (Vid.) Galutinis (Med.)\n" << string(62,'-') << "\n";
     for (const auto& s : studentai){
-        OutDaugiau << left << setw(14) << s.pavarde()
-            <<setw(14) << s.vardas()
-            << fixed << setprecision(2) 
-            << setw(19) << s.galutinisVid()
-            << setw(16) << s.galutinisMed() << '\n';
+        OutDaugiau << s << '\n';
         }
     auto endWrite = high_resolution_clock::now();
     cout << "Įrašymo į failus laikas: " << duration<double>(endWrite - startWrite).count() << " s\n";
@@ -258,19 +238,11 @@ void kategorijos3(const std::list<Student>& studentai,list<Student>& vargsiukai,
 
     OutMaziau << "Pavardė Vardas Galutinis (Vid.) Galutinis (Med.)\n" << std::string(62, '-') << "\n";
     for (const auto& s : vargsiukai){
-        OutMaziau << left << setw(14) << s.pavarde() 
-            << setw(14) << s.vardas()
-            << fixed << setprecision(2) 
-            << setw(19) << s.galutinisVid()
-            << setw(16) << s.galutinisMed() << '\n';
+        OutMaziau << s << '\n';
         }
     OutDaugiau << "Pavardė Vardas Galutinis (Vid.) Galutinis (Med.)\n" << string(62,'-') << "\n";
-    for (const auto& s : studentai){
-        OutDaugiau << left << setw(14) << s.pavarde() 
-            <<setw(14) << s.vardas()
-            << fixed << setprecision(2) 
-            << setw(19) << s.galutinisVid()
-            << setw(16) << s.galutinisMed() << '\n';
+    for (const auto& s : protingi){
+        OutDaugiau << s << '\n';
         }
 
     auto endWrite = high_resolution_clock::now();

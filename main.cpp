@@ -26,6 +26,18 @@ int main() {
     vector<Student> NeTokieProtingiV, protingiV;
     int KiekisStudentuV = 0;
 
+    {
+        Student a("Jonas", "Jonaitis");
+        Student b = a;  
+        Student c;
+        c = a;          
+
+        cout << "\n[Rule of Three demonstracija]\n";
+        cout << a << '\n';
+        cout << b << '\n';
+        cout << c << '\n';
+    }
+
     while (true) {
         int pasirinkimas;
         cout << "\nPasirinkimai:\n"
@@ -46,14 +58,14 @@ int main() {
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
         if (pasirinkimas == 0) {
-            string v, p;
+            Student s;
             cout << "\nĮveskite vardą ir pavardę: ";
-            getline(cin, v, ' ');
-            getline(cin, p);
-            studentai.emplace_back(v, p);
+            cin >> s; 
+            studentai.emplace_back(s);
             NamuDarbuBalai.emplace_back();
             cout << "\nStudentas (LIST) pridėtas.\n";
             KiekisStudentu++;
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
         }
         else if (pasirinkimas == 1) {
             if (KiekisStudentu == 0) {
@@ -73,9 +85,12 @@ int main() {
         }
         else if (pasirinkimas == 4) {
             vector<string> files = {
-                "studentai10.txt", "studentai100.txt", "studentai1000.txt",
-                "studentai10000.txt", "studentai100000.txt"
-            }; 
+                "Test_failai/studentai10.txt",
+                "Test_failai/studentai100.txt",
+                "Test_failai/studentai1000.txt",
+                "Test_failai/studentai10000.txt",
+                "Test_failai/studentai100000.txt"
+            };
             for (const auto& file : files) {
                 cout << "\n[Test LIST - 1 strategija] Failas: " << file << "\n";
                 list<Student> testStudentai;
@@ -90,8 +105,11 @@ int main() {
         }
         else if (pasirinkimas == 5) {
             vector<string> files = {
-                "studentai10.txt", "studentai100.txt", "studentai1000.txt",
-                "studentai10000.txt", "studentai100000.txt"
+                "Test_failai/studentai10.txt",
+                "Test_failai/studentai100.txt",
+                "Test_failai/studentai1000.txt",
+                "Test_failai/studentai10000.txt",
+                "Test_failai/studentai100000.txt"
             };
             for (const auto& file : files) {
                 cout << "\n[Test Vector - 1 strategija] Failas: " << file << "\n";
@@ -109,8 +127,11 @@ int main() {
         }
         else if (pasirinkimas == 6) {
             vector<string> files = {
-                "studentai10.txt", "studentai100.txt", "studentai1000.txt",
-                "studentai10000.txt", "studentai100000.txt"
+                "Test_failai/studentai10.txt",
+                "Test_failai/studentai100.txt",
+                "Test_failai/studentai1000.txt",
+                "Test_failai/studentai10000.txt",
+                "Test_failai/studentai100000.txt"
             };
             for (const auto& file : files) {
                 cout << "\n[Test LIST - 2 strategija] Failas: " << file << "\n";
@@ -130,8 +151,11 @@ int main() {
         }
         else if (pasirinkimas == 7) {
             vector<string> files = {
-                "studentai10.txt", "studentai100.txt", "studentai1000.txt",
-                "studentai10000.txt", "studentai100000.txt"
+                "Test_failai/studentai10.txt",
+                "Test_failai/studentai100.txt",
+                "Test_failai/studentai1000.txt",
+                "Test_failai/studentai10000.txt",
+                "Test_failai/studentai100000.txt"
             };
             for (const auto& file : files) {
                 cout << "\n[Test VECTOR - 2 strategija] Failas: " << file << "\n";
@@ -151,8 +175,11 @@ int main() {
         }
          else if (pasirinkimas == 8) {
             vector<string> files = {
-                "studentai10.txt", "studentai100.txt", "studentai1000.txt",
-                "studentai10000.txt", "studentai100000.txt"
+                "Test_failai/studentai10.txt",
+                "Test_failai/studentai100.txt",
+                "Test_failai/studentai1000.txt",
+                "Test_failai/studentai10000.txt",
+                "Test_failai/studentai100000.txt"
             };
             for (const auto& file : files) {
                 cout << "\n[Test LIST - 3 strategija] Failas: " << file << "\n";
@@ -172,8 +199,11 @@ int main() {
         }
          else if (pasirinkimas == 9) {
             vector<string> files = {
-                "studentai10.txt", "studentai100.txt", "studentai1000.txt",
-                "studentai10000.txt", "studentai100000.txt"
+                "Test_failai/studentai10.txt",
+                "Test_failai/studentai100.txt",
+                "Test_failai/studentai1000.txt",
+                "Test_failai/studentai10000.txt",
+                "Test_failai/studentai100000.txt"
             };
             for (const auto& file : files) {
                 cout << "\n[Test Vector - 3 strategija] Failas: " << file << "\n";

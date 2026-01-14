@@ -127,22 +127,14 @@ void kategorijos(const vector<Student>& studentai, vector<Student>& NeTokieProti
     outProtingi << "Pavardė Vardas Galutinis (Vid.) Galutinis (Med.)\n";
     outProtingi << string(62, '-') << "\n";
     for (const auto& s : protingi) {
-        outProtingi << setw(14) << left << s.pavarde()
-                    << setw(14) << left << s.vardas()
-                    << fixed << setprecision(2)
-                    << setw(19) << left << s.galutinisVid()
-                    << setw(16) << left << s.galutinisMed() << '\n';
+        outProtingi << s << '\n';
     }
     outProtingi.close();
 
     outMaziau << "Pavardė Vardas Galutinis (Vid.) Galutinis (Med.)\n";
     outMaziau << string(62, '-') << "\n";
     for (const auto& s : NeTokieProtingi) {
-        outMaziau << setw(14) << left << s.pavarde()
-                  << setw(14) << left << s.vardas()
-                  << fixed << setprecision(2)
-                  << setw(19) << left << s.galutinisVid()
-                  << setw(16) << left << s.galutinisMed() << '\n';
+        outMaziau << s << '\n';
     }
     outMaziau.close();
 
@@ -164,11 +156,7 @@ void rezultatas(const vector<Student>& studentai) {
     kategorijos(sorted, NeTokieProtingi, protingi);
 
     for (const auto& s : sorted) {
-        cout << setw(14) << left << s.pavarde()
-             << setw(14) << left << s.vardas()
-             << fixed << setprecision(2)
-             << setw(19) << left << s.galutinisVid()
-             << setw(16) << left << s.galutinisMed() << '\n';
+        cout << s << '\n';
     }
 }
 
@@ -195,20 +183,12 @@ void kategorijos2(vector<Student>& studentai, vector<Student>& vargsiukai)
 
     OutMaziau << "Pavardė Vardas Galutinis (Vid.) Galutinis (Med.)\n" << string(62, '-') << "\n";
     for (const auto& s : vargsiukai) {
-        OutMaziau << left << setw(14) << s.pavarde()
-            << setw(14) << s.vardas()
-            << fixed << setprecision(2)
-            << setw(19) << s.galutinisVid()
-            << setw(16) << s.galutinisMed() << '\n';
+        OutMaziau << s << '\n';
     }
 
     OutDaugiau << "Pavardė Vardas Galutinis (Vid.) Galutinis (Med.)\n" << string(62, '-') << "\n";
     for (const auto& s : studentai) {
-        OutDaugiau << left << setw(14) << s.pavarde()
-            << setw(14) << s.vardas()
-            << fixed << setprecision(2)
-            << setw(19) << s.galutinisVid()
-            << setw(16) << s.galutinisMed() << '\n';
+        OutDaugiau << s << '\n';
     }
 
     auto endWrite = high_resolution_clock::now();
@@ -241,20 +221,12 @@ void kategorijos3(const vector<Student>& studentai,vector<Student>& vargsiukai,v
 
     OutMaziau << "Pavardė Vardas Galutinis (Vid.) Galutinis (Med.)\n" << string(62, '-') << "\n";
     for (const auto& s : vargsiukai) {
-        OutMaziau << left << setw(14) << s.pavarde()
-                  << setw(14) << s.vardas()
-                  << fixed << setprecision(2)
-                  << setw(19) << s.galutinisVid()
-                  << setw(16) << s.galutinisMed() << '\n';
+        OutMaziau << s << '\n';
     }
 
     OutDaugiau << "Pavardė Vardas Galutinis (Vid.) Galutinis (Med.)\n" << string(62, '-') << "\n";
     for (const auto& s : protingi) {
-        OutDaugiau << left << setw(14) << s.pavarde()
-                   << setw(14) << s.vardas()
-                   << fixed << setprecision(2)
-                   << setw(19) << s.galutinisVid()
-                   << setw(16) << s.galutinisMed() << '\n';
+        OutDaugiau << s << '\n';
     }
 
     auto endWrite = high_resolution_clock::now();

@@ -6,6 +6,8 @@
 #include <algorithm>
 #include <numeric>
 #include <cstddef>
+#include <iostream>
+#include <iomanip>
 
 class Student {
 private:
@@ -24,7 +26,6 @@ private:
 public:
     Student();
     Student(const std::string& v, const std::string& p);
-    ~Student();
 
     const std::string& vardas() const;
     const std::string& pavarde() const;
@@ -43,6 +44,14 @@ public:
         galutinisVid_ = 0.4 * vid + 0.6 * egz;
         galutinisMed_ = mediana(balai);
     }
+
+    // Rule of Three
+    Student(const Student& other);
+    Student& operator=(const Student& other);
+    ~Student();
+
+    friend std::istream& operator>>(std::istream& in, Student& s);
+    friend std::ostream& operator<<(std::ostream& out, const Student& s);
 };
 
 bool operator<(const Student& a, const Student& b);
