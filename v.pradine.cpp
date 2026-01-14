@@ -28,7 +28,7 @@ void ivedimas(list<Student>& studentai, list<list<int>>& NamuDarbuBalai, int Kie
 
     cout << "\nStudento pažymių konteinerio adresas atmintyje: " << &(*itBalai) << "\n";
 
-    int EmptyCount = 0, balas;
+    int EmptyCount = 0;
     string eilute;
 
     cout << "\nĮveskite pažymius. Norit baigti ('Enter' du kartus): \n";   

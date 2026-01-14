@@ -17,7 +17,6 @@ bool operator<(const Student& a, const Student& b) {
     return a.vardas() < b.vardas();
 }
 
-// Rule of Three
 Student::Student(const Student& other)
     : vardas_(other.vardas_),
       pavarde_(other.pavarde_),

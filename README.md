@@ -35,6 +35,39 @@ Programa skirta:
   - `studentai10000.txt`
   - `studentai100000.txt`
 
+## Perdengti metodai: įvestis ir išvestis (Student klasė)
+
+Šiame projekte implementuoti perdengti įvesties ir išvesties metodai, leidžiantys patogiai dirbti su Student klase tiek naudojant standartinius srautus, tiek failus.
+
+### Duomenų įvedimas
+
+Rankinė įvestis `std::cin`
+Perdengtas įvesties `operatorius >>` leidžia nuskaityti studento vardą ir pavardę iš klaviatūros.
+- Naudojimas:
+- Student s;
+- cin >> s;
+
+Šis metodas realizuotas perdengiant:
+- `istream& operator>>(istream& in, Student& s);`
+
+Naudojamas:
+- `main.cpp` ir `ivedimas()` funkcijoje.
+
+## Duomenų išvedinas
+
+Išvestis į ekraną `std::cout`
+Perdengtas išvesties `operatorius <<` leidžia atvaizduoti Student objektą ekrane:
+- Naudojantis:
+- cout << student;
+
+Operatorius realizuotas:
+- `ostream& operator<<(ostream& out, const Student& s);`
+
+Naudojimas:
+- Studentų rezultatams išvesti į failus:
+- `protingi.txt`
+- `maziau.txt`
+
 ## Paleidimo instrukcija (su g++)
 
 ### Kaip kompiliuoti
