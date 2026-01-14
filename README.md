@@ -70,6 +70,9 @@ Naudojimas:
 - `protingi.txt`
 - `maziau.txt`
 
+![Pažymiai daugiau už 5: ](image.png)
+![Pažymiai mažiau už 5: ](image-1.png)
+
 ## Paleidimo instrukcija (su g++)
 
 ### Kaip kompiliuoti
