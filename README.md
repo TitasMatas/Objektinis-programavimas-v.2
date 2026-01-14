@@ -1,15 +1,15 @@
 ## Release istorija ir rezultatų analizė
 
 ### v1.1_release  
-**Pirmasis stabilus klasinis sprendimas**
+### Pirmasis stabilus klasinis sprendimas
 
-**Pakeitimai:**
+### Pakeitimai:
 - Programa perrašyta naudojant klases vietoje struktūrų
 - Pradėta naudoti `Student` klasė
 - Atlikti pirmieji spartos testai su `list` ir `vector` konteineriais
 - Sukurta bazinė testavimo infrastruktūra
 
-**Rezultatų komentaras:**
+### Rezultatų komentaras:
 - `vector` konteineris parodė geresnį našumą didesniuose duomenų rinkiniuose
 - `list` buvo lėtesnis dėl dažnų atminties prieigų
 - Tai patvirtino, kad konteinerio pasirinkimas turi didelę įtaką bendram vykdymo laikui
@@ -17,21 +17,21 @@
 ### v1.2_release  
 **Rule of Three ir projekto struktūros pertvarkymas**
 
-**Pakeitimai:**
+### Pakeitimai:
 - Implementuota **Rule of Three** (`copy ctor`, `operator=`, `destructor`) klasėje `Student`
 - Perstruktūrizuotas projekto katalogų išdėstymas
 - Atnaujintas `README.md` su detalesne spartos analize
 - Patobulinta kodo skaitymo ir priežiūros kokybė
 
-**Rezultatų komentaras:**
+### Rezultatų komentaras:
 - Rule of Three įdiegimas **neturėjo reikšmingos neigiamos įtakos našumui**
 - Kopijavimo operacijos tapo aiškiai kontroliuojamos ir saugios
 - Projektas tapo labiau paruoštas tolimesnei plėtrai ir testavimui
 
 ### v1.5_release  
-**Abstrakti bazinė klasė `Zmogus` ir paveldėjimas**
+### Abstrakti bazinė klasė `Zmogus` ir paveldėjimas
 
-**Pakeitimai:**
+### Pakeitimai:
 - Pridėta abstrakti bazinė klasė `Zmogus`
 - `Student` klasė paveldi iš `Zmogus`:
   ```cpp
@@ -77,6 +77,23 @@ Programa skirta:
 - Dokumentacija
   - `Makefile`  
 
+## Testavimas
+
+### Kaip kompiliuoti
+- Terminale:
+  ```bash
+  g++ -std=c++17 -O2 Tests/tests.cpp student.cpp vector.cpp -I./Tests -o unit_tests.exe
+  ```
+
+### Kaip paleisti
+- Terminale:
+  ```bash
+  ./unit_tests.exe
+  ```
+
+ ### Numatyti rezultatai
+![Testai: ](Documentacija/Nuotraukos/Test.png) 
+
 ## Perdengti metodai: įvestis ir išvestis (Student klasė)
 
 Šiame projekte implementuoti perdengti įvesties ir išvesties metodai, leidžiantys patogiai dirbti su Student klase tiek naudojant standartinius srautus, tiek failus.
@@ -112,8 +129,8 @@ Naudojimas:
 - `protingi.txt`
 - `maziau.txt`
 
-![Pažymiai daugiau už 5: ](Documentacija/Nuotraukos/image.png)
-![Pažymiai mažiau už 5: ](Documentacija/Nuotraukos/image-1.png)
+![Pažymiai daugiau už 5: ](Documentacija/Nuotraukos/protingi.png)
+![Pažymiai mažiau už 5: ](Documentacija/Nuotraukos/maziau.png)
 
 ## Paleidimo instrukcija (su g++)
 
