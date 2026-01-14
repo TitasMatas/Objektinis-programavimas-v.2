@@ -5,25 +5,36 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-# Compiler flags for different platforms
+# Default build type
 if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Release)
 endif()
 
+# Warnings
 if(MSVC)
-  add_compile_options(/W4)  # For MSVC, enable high warning level
+  add_compile_options(/W4)
 else()
-  add_compile_options(-Wall -Wextra -Wpedantic)  # For gcc/clang
+  add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
+# --- Main program sources ---
 set(SOURCES
     main.cpp
     v.pradine.cpp
     vector.cpp
+    student.cpp
 )
 
-# Create executable
 add_executable(programa ${SOURCES})
 
-# Optional: Install rule if desired
+# --- Unit tests (optional bonus) ---
+# If you have doctest.h in Tests/ and tests.cpp in Tests/
+add_executable(unit_tests
+    Tests/tests.cpp
+    student.cpp
+    vector.cpp
+)
+target_include_directories(unit_tests PRIVATE Tests)
+
+# Install rule (optional)
 install(TARGETS programa RUNTIME DESTINATION bin)
