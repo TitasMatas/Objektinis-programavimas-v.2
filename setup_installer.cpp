@@ -42,17 +42,15 @@ int main() {
 
     if (!copyFileTo(srcProgram, dstProgram)) {
         std::cerr << "[KLAIDA] Nepavyko nukopijuoti programa.exe.\n";
-        std::cerr << "Patikrink, ar programa.exe yra tame pačiame folderyje kaip Setup.exe.\n";
+        std::cerr << "Paleisk Setup.exe faila su Admin.\n";
         return 2;
     }
 
-    // Optional README
     copyFileTo(srcReadme, dstReadme);
 
-    std::cout << "[OK] Programa idiegta sekmingai!\n";
-    std::cout << "Kelias: " << installDir << "\n";
+    std::cout << "Programa idiegta sekmingai!\n";
+    std::cout << "Vieta: " << installDir << "\n";
     std::cout << "Paleidimas: " << dstProgram << "\n\n";
-    std::cout << "Pastaba: jei diegimas nepavyko, paleisk Setup.exe su 'Run as Administrator'.\n";
 
     return 0;
 }
