@@ -124,12 +124,26 @@ Naudojimas:
 - Šioje direktorijoje pridedami failai `programa.exe` ir `README.md`
 - Sukuriamas shortcut local vartootjui and darbalaukio
 
-## Paleidimo instrukcija (su g++)
+## Paleidimo instrukcija (sukurti `Setup.exe`)
 
 ### Kaip kompiliuoti
 - Terminale:
   ```bash
-  g++ -std=c++17 v.pradine.cpp main.cpp vector.cpp student.cpp -o programa.exe
+  g++ -std=c++17 -O2 setup_installer.cpp -o Setup.exe -lShell32 -lole32 -luuid
+  ```
+
+### Kaip paleisti
+- Terminale:
+  ```bash
+  ./Setup.exe
+  ```
+
+## Paleidimo instrukcija (sukurti `programa.exe`)
+
+### Kaip kompiliuoti
+- Terminale:
+  ```bash
+  g++ -std=c++17 -O2 main.cpp v.pradine.cpp vector.cpp student.cpp -o programa.exe
   ```
 
 ### Kaip paleisti
