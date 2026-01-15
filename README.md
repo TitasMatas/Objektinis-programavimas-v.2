@@ -1,4 +1,37 @@
-# Studentų pažymių valdymo sistema ir spartos analizė
+## Išpildymas
+
+### Pakeitimai:
+- Programa perrašyta naudojant klases vietoje struktūrų
+- Pradėta naudoti `Student` klasė
+- Atlikti pirmieji spartos testai su `list` ir `vector` konteineriais
+- Sukurta bazinė testavimo infrastruktūra
+
+### Rezultatų komentaras:
+- `vector` konteineris parodė geresnį našumą didesniuose duomenų rinkiniuose
+- `list` buvo lėtesnis dėl dažnų atminties prieigų
+- Tai patvirtino, kad konteinerio pasirinkimas turi didelę įtaką bendram vykdymo laikui
+
+### Rule of Three ir projekto struktūros pertvarkymas
+
+### Pakeitimai:
+- Implementuota **Rule of Three** (`copy ctor`, `operator=`, `destructor`) klasėje `Student`
+- Perstruktūrizuotas projekto katalogų išdėstymas
+- Atnaujintas `README.md` su detalesne spartos analize
+- Patobulinta kodo skaitymo ir priežiūros kokybė
+
+### Rezultatų komentaras:
+- Rule of Three įdiegimas **neturėjo reikšmingos neigiamos įtakos našumui**
+- Kopijavimo operacijos tapo aiškiai kontroliuojamos ir saugios
+- Projektas tapo labiau paruoštas tolimesnei plėtrai ir testavimui
+
+### Abstrakti bazinė klasė `Zmogus` ir paveldėjimas
+
+### Pakeitimai:
+- Pridėta abstrakti bazinė klasė `Zmogus`
+- `Student` klasė paveldi iš `Zmogus`:
+  ```cpp
+  class Student : public Zmogus
+  ```
 
 ## Aprašymas
 Programa skirta:
@@ -37,7 +70,8 @@ Programa skirta:
   - `studentai10000.txt`
   - `studentai100000.txt`
 - Dokumentacija
-  - `Makefile`  
+  - `Makefile` - įdiegimo instrukcijos
+
 
 ## Perdengti metodai: įvestis ir išvestis (Student klasė)
 
@@ -74,8 +108,8 @@ Naudojimas:
 - `protingi.txt`
 - `maziau.txt`
 
-![Pažymiai daugiau už 5: ](Documentacija/Nuotraukos/image.png)
-![Pažymiai mažiau už 5: ](Documentacija/Nuotraukos/image-1.png)
+![Pažymiai daugiau už 5: ](Documentacija/Nuotraukos/protingi.png)
+![Pažymiai mažiau už 5: ](Documentacija/Nuotraukos/maziau.png)
 
 ## Paleidimo instrukcija (su g++)
 
@@ -203,11 +237,6 @@ Naudojimas:
 | studentai1000.txt   | −11 %          | +66 %          | −11 %          |
 | studentai10000.txt  | −5 %           | +35 %          | −40 %          |
 | studentai100000.txt | +14 %          | +33 %          | +36 %          |
-
-
-## Pastabos
-- Po visų atnaujinimų Vector laikas gerokai pamažėjo 1 > 2 > 3, kur su 3 Strategija, jis yra optimaliausias
-- Po Class pridėjimo List kompiliacija pasikeitė, naujausi testai parodė, jog optimaliausia strategija tampa 2
 
 
 ## Optimizavimo flag'ų (O1/O2/O3) eksperimentinė analizė
