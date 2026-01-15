@@ -111,6 +111,19 @@ Naudojimas:
 ![Pažymiai daugiau už 5: ](Documentacija/Nuotraukos/protingi.png)
 ![Pažymiai mažiau už 5: ](Documentacija/Nuotraukos/maziau.png)
 
+## Diegimo instrukcija `Setup.exe`
+
+### Procesas
+- Įsitikinkite, kad `Setup.exe`, `programa.exe` ir `README.md` yra tame pačiame kataloge.
+- Spauskite `Setup.exe` dešiniu pelės mygtuku.
+- Pasirinkite `Run as administrator`.
+- Programa bus įdiegta į:
+
+### Veikimas:
+- Sukurtas folder `Program files\Vu\Titas-Matas`
+- Šioje direktorijoje pridedami failai `programa.exe` ir `README.md`
+- Sukuriamas shortcut local vartootjui and darbalaukio
+
 ## Paleidimo instrukcija (su g++)
 
 ### Kaip kompiliuoti
